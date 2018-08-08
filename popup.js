@@ -1,24 +1,34 @@
-let filter = document.getElementById('filter');
+let addButton = document.getElementById('addButton');
 
 let filterInput = document.getElementById('filterInput');
 let filterWord = document.getElementById('filterWord');
 
-	chrome.storage.sync.get('filter', function(result) {
-    console.log('Value currently is ' + result.filter);
-    filterWord.innerHTML = result.filter;
-  });
+var wordArray = [];
 
-filter.onclick = function(element) {
-	chrome.storage.sync.set({filter: String(filterInput.value)}, function() {
-		console.log('Filter value is set to ' + filterInput.value);
-  });
+function updateWordList() {
+    chrome.storage.sync.get('wordList', function(result) {
 
-	// wait(2000);
+        wordArray = result.wordList;
 
-	chrome.storage.sync.get('filter', function(result) {
-    console.log('Value currently is ' + result.filter);
-    filterWord.innerHTML = result.filter;
-  });
-  
+        var wordsHTML = "<ul>";
+        for (var i = 0; i < wordArray.length; i++) {
+            wordsHTML = wordsHTML + ("<li>" + wordArray[i] + "</li>");
+        }
+        wordsHTML = wordsHTML + ("</ul>");
+        filterWord.innerHTML = wordsHTML;
+    });
+}
+
+
+updateWordList();
+
+addButton.onclick = function addCurrentString() {
+    wordArray.push(filterInput.value);
+    filterInput.value = '';
+    
+    chrome.storage.sync.set({wordList: wordArray}, function() {
+        console.log('Words: ' + wordArray);
+        updateWordList();
+    });
 };
 

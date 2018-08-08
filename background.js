@@ -8,6 +8,20 @@ chrome.runtime.onInstalled.addListener(function()
     // chrome.storage.sync.set({color: '#3aa757'}, function() {
     //   console.log("The color is green.");
     // });
+    
+    // chrome.storage.sync.set({filter: ['a','b','c']}, function() {
+    //     console.log("added base values");
+    // });
+    
+    // chrome.storage.sync.get('filter', function(result) {
+    //     console.log('Value currently is ' + result.wordList);
+    //     var wordsHTML = "<ul>";
+    //     for (var i = 0; i < result.wordList.length; i++) {
+    //         wordsHTML.push("<li>" + result.wordList[i] + "</li>");
+    //     }
+    //     wordsHTML.push("</ul>");
+    //     filterWord.innerHTML = wordsHTML;
+    // });
 
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
