@@ -3,6 +3,7 @@
   <head>
     <style>
       body {
+			margin-top: 80px;
         width: 500px;
       }
       button {
@@ -11,11 +12,15 @@
         outline: none;
       }
 		header {
-			width: 500px;
+			width: 520px;
+			top: 0;
+/*			height: 80px;*/
 			padding: 0;
 			margin: 0;
-			background-color: lightblue;
-			border-radius: 3px;
+			position: relative;
+			left: -8px;
+			right: 8px;
+			background-color: #58C0EA;
 			display: block;
 		}
 		select {
@@ -29,13 +34,13 @@
 	    <p>Add to the word bank and determine the sensitivity of your filter</p>
 	  </header>
 	  <p>How many words would you like to filter by?</p>
-	<select>
-		<option value="one">1</option>
-		<option value="two">2</option>
-		<option value="three">3</option>
-		<option value="four">4</option>
-		<option value="five">5</option>
-		<option value="six">6</option>
+	<select id="filterCount">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
 	</select>
   <br/>
   <br/>
