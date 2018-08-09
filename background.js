@@ -9,9 +9,9 @@ chrome.runtime.onInstalled.addListener(function()
     //   console.log("The color is green.");
     // });
     
-    // chrome.storage.sync.set({filter: ['a','b','c']}, function() {
-    //     console.log("added base values");
-    // });
+    chrome.storage.sync.set({wordList: []}, function() {
+        console.log("Add empty values");
+    });
     
     // chrome.storage.sync.get('filter', function(result) {
     //     console.log('Value currently is ' + result.wordList);

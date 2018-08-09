@@ -7,9 +7,9 @@ var wordArray = [];
 
 function updateWordList() {
     chrome.storage.sync.get('wordList', function(result) {
-
+        
         wordArray = result.wordList;
-
+        
         var wordsHTML = "<ul>";
         for (var i = 0; i < wordArray.length; i++) {
             wordsHTML = wordsHTML + ("<li>" + wordArray[i] + "</li>");
