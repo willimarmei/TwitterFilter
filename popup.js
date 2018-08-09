@@ -7,9 +7,9 @@ var wordArray = [];
 
 function updateWordList() {
     chrome.storage.sync.get('wordList', function(result) {
-        
+
         wordArray = result.wordList;
-        
+
         var wordsHTML = "<ul>";
         for (var i = 0; i < wordArray.length; i++) {
             wordsHTML = wordsHTML + ("<li>" + wordArray[i] + "</li>");
@@ -22,7 +22,7 @@ function updateWordList() {
 
 updateWordList();
 
-addButton.onclick = function addCurrentString() {
+function addCurrentString() {
     wordArray.push(filterInput.value);
     filterInput.value = '';
     
@@ -32,3 +32,14 @@ addButton.onclick = function addCurrentString() {
     });
 };
 
+addButton.onclick = function(){
+    addCurrentString();
+}
+
+filterInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        // Do more work
+        addCurrentString();
+    }
+});
