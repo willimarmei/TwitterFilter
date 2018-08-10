@@ -8,18 +8,22 @@
 			margin-left: 0;
 			top: -50px;
 			background-color: #E9EBEE;
-			padding: 10px;
-			 
+			padding: 10px;	 
 		}
 		button {
 			height: 20px;
 			width: 60px;
-			outline: none;
+			border-color: #5f86ce;
+			background-color: #E9EBEE;
+		}
+		button:hover {
+			background: #5f86ce;
+		    color: white;
 		}
 		header {
-			width: 520px;
-			margin-top: -60px;
-/*			padding: 10px;*/
+			width: 800px;
+			margin-top: -200px;
+			padding: 10px;
 			margin: 0;
 			position: 0;
 			background-color: #5f86ce;
@@ -29,13 +33,29 @@
 		}
 		select {
 			width: 60px;
+			border-color: #5f86ce;
+			background: #E9EBEE;	
+		}
+		input [type = text]{
+			width: 170px;
+			border-color: #5f86ce;
+			background-color: #E9EBEE;
+			border-width: 1.5px;
+/*			padding: 12px 20px;*/
+/*			margin: 8px 0;*/
+/*			box-sizing: border-box;*/
+			
 		}
     </style>
+    <header>
+      <h3>Facebook Feed Filter</h3>
+      <p>Add to the word bank and determine the sensitivity of your filter</p>
+    </header>
   </head>
-  <header>
+  <!-- <header>
     <h3>Facebook Feed Filter</h3>
     <p>Add to the word bank and determine the sensitivity of your filter</p>
-  </header>
+  </header> -->
   <body>
 	  <!-- <header >
 	    <h3>Facebook Feed Filter</h3>
@@ -53,7 +73,7 @@
   <br/>
   <br/>
   
-    <input id="filterInput" value=""/>
+    <input id="filterInput" placeholder="Enter Word"/>
     <button id="addButton">Add</button>
     <div><span id="filterWord"></span></div>
 	<script src="popup.js"></script>
