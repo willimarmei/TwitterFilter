@@ -5,13 +5,6 @@ const filterCount = document.getElementById('filterCount');
 
 var wordDict = {};
 
-// class Word {
-//     constructor(text, checked) {
-//         this.text = text;
-//         this.checked = checked;
-//     }
-// }
-
 var checkUncheckWord = function() {
     // Set up
     var wordToChange = this.id;
@@ -23,36 +16,37 @@ var checkUncheckWord = function() {
     });
 }
 
+var deleteWord = function() {
+    // Set up
+    var wordToDelete = this.id;
+    delete wordDict[wordToDelete];
+
+    // Write to storage
+    chrome.storage.sync.set({wordList: wordDict}, function() {
+        updateUI(); // On completioon
+    });
+
+}
+
 function updateUI() {
 
     // Update the word list
     chrome.storage.sync.get('wordList', function(result) {
         wordDict = result['wordList'];
 
-        var wordsHTML = "<ul>";
+        var wordsHTML = "<ul style='padding-left:0;'>";
         for (var text in wordDict) {
             console.log(text);
             var checked = wordDict[text];
             if (checked == true) {
-                wordsHTML += "<input type='checkbox' class='wordCheckBox' id='" + text + "' checked> " + text + " </input></br>";
+                var extraxString = "checked";
             } else {
-                wordsHTML += "<input type='checkbox' class='wordCheckBox' id='" + text + "'>" + text +"</input></br>";
+                var extraxString = "";
             }
+            wordsHTML += "<span style='cursor: pointer; margin-right:14px;' class='wordDeleteBox' id=" + text + ">&#10006;</span><input style='cursor: pointer;' type='checkbox' class='wordCheckBox' id='" + text + "' " + extraxString + "> " + text + " </input></br>";
         }
         wordsHTML += "</ul>";
         filterWord.innerHTML = wordsHTML;
-
-        // for (var i = 0; i < wordDict.length; i++) {
-        //     if (wordDict[i].checked == true) {
-        //         var start = "<input type='checkbox' class='wordCheckBox' id='" + wordDict[i].text + "' checked></input>";
-                
-        //     } else {
-        //         var start = "<input type='checkbox' class='wordCheckBox' id='" + wordDict[i].text + "'></input>";
-        //     }
-        //     wordsHTML += start + wordDict[i].text + "</br>";
-        // }
-        // wordsHTML += ("</ul>");
-        // filterWord.innerHTML = wordsHTML;
 
         // Add listeners to the checkboxes
         var lis = document.getElementsByClassName("wordCheckBox");
@@ -60,6 +54,14 @@ function updateUI() {
             var listElement = lis[i];
             listElement.removeEventListener("click",checkUncheckWord);
             listElement.addEventListener("click",checkUncheckWord);
+        }
+
+        // Add listeners to the delete boxes
+        var boxes = document.getElementsByClassName("wordDeleteBox");
+        for (var i = 0; i < boxes.length; i++) {
+            var box = boxes[i];
+            box.removeEventListener("click",deleteWord);
+            box.addEventListener("click",deleteWord);
         }
     });
 
