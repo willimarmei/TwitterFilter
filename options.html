@@ -8,14 +8,29 @@
         outline: none;
         margin: 10px;
       }
+	#imgBackground {
+		width: 105%;
+		height: 12%;
+		z-index: -1; position: absolute;
+		top: 0px;
+		right: 1%;
+		box-shadow: 5px 2px 3px grey;
+	}
+	body {
+		font-size: large;
+	}
     </style>
   </head>
+	<img id="imgBackground" src="TBackground.jpg" alt = "backgroundImg">
+    <h1>Social Media Filter</h1>
   <body>
-    <div id="buttonDiv">
-    </div>
-    <div>
-      <p>Choose a different background color!</p>
-    </div>
+
+	<p>Does your social media feel cluttered by things you don't 
+		want to see? Whether it's sports spoilers, movie or 
+		TV show spoilers, or even that racist relative that
+		posts too much, we can help. Just choose the words you 
+		want to filter and the sensitivity level and we'll 
+		take care of the rest.</p>
   </body>
   <script src="options.js"></script>
 </html>

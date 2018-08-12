@@ -33,12 +33,9 @@
       "32": "images/get_started32.png",
       "48": "images/get_started48.png",
       "128": "images/get_started128.png"*/
+
   },
   "content_scripts": [
-   {
-     "matches": ["*://*.facebook.com/*"],
-     "js": ["FB_hider.js"]
-   },
    {
      "matches": ["*://*.twitter.com/*"],
      "js": ["TW_hider.js"]
@@ -46,3 +43,5 @@
  ],
   "manifest_version": 2
 }
+
+
