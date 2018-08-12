@@ -25,11 +25,7 @@
   },
   "content_scripts": [
    {
-     "matches": ["*://*.facebook.com/*"],
-     "js": ["FB_hider.js"]
-   },
-   {
-     "matches": ["*://*.twitter.com/*"],
+     "matches": ["https://*.twitter.com/*"],
      "js": ["TW_hider.js"]
    }
  ],
