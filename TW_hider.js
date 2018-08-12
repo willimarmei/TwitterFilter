@@ -3,8 +3,6 @@ var count = 0;
 
 function hideOrShowPosts() {
 
-    // Set filter values from storage
-
     var posts = document.querySelectorAll('.tweet');
 
     for (var i = 0; i < posts.length; i++) {
@@ -16,7 +14,7 @@ function hideOrShowPosts() {
         var postContent = posts[i].innerHTML;
         // console.log('test1');
         for (var j = 0; j < words.length; j++) {
-            if (postContent.toLowerCase().match(' ' + words[j].toLowerCase() + ' ')) {
+            if (postContent.toLowerCase().match(words[j].toLowerCase())) {
                 // console.log('found a word');
                 badWords++;
             }
