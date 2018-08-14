@@ -13,6 +13,7 @@ var checkUncheckWord = function() {
 
     // Write to storage
     chrome.storage.sync.set({wordList: wordDict}, function() {
+        updateUI();
     });
 }
 
