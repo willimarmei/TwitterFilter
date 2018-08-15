@@ -18,7 +18,7 @@ var checkUncheckWord = function() {
     });
 }
 
-// When the user clicks on div, open the popup
+// When the user clicks on the imgInfo image, open the popup
 function showPopup(e) {
 	console.log(e);
 	e.stopPropagation();
@@ -31,6 +31,7 @@ function showPopup(e) {
  	}
 }
 
+// When the user clicks anywhere close the popup
 function hidePopup(e) {
 	console.log(e);
 	e.stopPropagation();
