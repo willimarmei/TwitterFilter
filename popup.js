@@ -2,7 +2,8 @@ const addButton = document.getElementById('addButton');
 const filterInput = document.getElementById('filterInput');
 const filterWord = document.getElementById('filterWord');
 const filterCount = document.getElementById('filterCount');
-
+const popup = document.getElementById("myPopup");
+var popupbox = false;
 var wordDict = {};
 
 var checkUncheckWord = function() {
@@ -16,6 +17,33 @@ var checkUncheckWord = function() {
         updateUI();
     });
 }
+
+// When the user clicks on div, open the popup
+function showPopup(e) {
+	console.log(e);
+	e.stopPropagation();
+	if (!popupbox) {
+		popup.classList.toggle("show");
+		document.getElementsByTagName("html")[0].onclick=hidePopup;
+		document.getElementById("imgInfo").onclick=undefined;
+		popupbox = true;
+
+ 	}
+}
+
+function hidePopup(e) {
+	console.log(e);
+	e.stopPropagation();
+	if (popupbox) {
+		popup.classList.toggle("show");
+		document.getElementsByTagName("html")[0].onclick=undefined;
+		document.getElementById("imgInfo").onclick=showPopup;
+		popupbox = false;
+	}
+}
+
+document.getElementById("imgInfo").onclick=showPopup;
+
 
 var deleteWord = function() {
     // Set up
