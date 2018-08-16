@@ -113,16 +113,14 @@ updateUI();
 
 // Save the current word in the input field
 function addCurrentString() {
-
-    // const newWord = new Word(filterInput.value, true);
-    wordDict[filterInput.value] = true;
-
-    filterInput.value = '';
-    
-    chrome.storage.sync.set({wordList: wordDict}, function() {
-        updateUI();
-    });
-};
+    if (filterInput.value !== '') {
+      wordDict[filterInput.value] = true;
+      filterInput.value = '';
+      chrome.storage.sync.set({wordList: wordDict}, function() {
+          updateUI();
+      });
+    }
+}
 
 // Save the current word limit
 function addCurrentCount() {

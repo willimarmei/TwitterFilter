@@ -6,23 +6,33 @@ function hideOrShowPosts() {
 
     var posts = document.querySelectorAll('.tweet');
 
+    var hiddenCount = 0;
+
     for (var i = 0; i < posts.length; i++) {
         var badWords = 0;
-        var postContent = posts[i].innerHTML;
+        var postContent = posts[i].querySelectorAll('.tweet-text')[0].innerHTML;
+        // console.log(postContent);
+        // break;
         for (var j = 0; j < words.length; j++) {
             // If the word is turned on use it to hide
-            if (wordDict[words[i]]) {
+            // console.log('Checking if word:' + j + ' ' + words[j] + ' is checked');
+            if (wordDict[words[j]]) {
+                // console.log('Checking word: ' + words[j] + ' in: ' + postContent);
                 if (postContent.toLowerCase().match(words[j].toLowerCase())) {
                     badWords++;
                 }
             }
         }
         if (badWords >= count) {
+            hiddenCount++;
             document.querySelectorAll('.tweet')[i].style.display = 'none';
+            // posts[i].style.display = 'none';
         } else {
             document.querySelectorAll('.tweet')[i].style.display = 'block';
+            // posts[i].style.display = 'block';
         }
     }
+    console.log('Hid ' + hiddenCount + ' posts');
 }
 
 
@@ -39,6 +49,6 @@ function updateContent() {
 
 updateContent();
 
-setInterval(function(){ 
+setInterval(function(){
     updateContent();
-}, 300);
+}, 1000);
