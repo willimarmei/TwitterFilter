@@ -6,7 +6,7 @@ Move Popup box to look better
 Revise Popup box text
 Create and add logo
 Error popup message for words already included in the word bank
-Don't let empty strings into the word bank
+✓ Don't let empty strings into the word bank
 Fix color on the header bar
 Fix scrolling issues
 
